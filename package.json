@@ -1,0 +1,20 @@
+{
+	"name": "iizuna-page-transition",
+	"version": "0.0.0",
+	"description": "Page transition component for the iizuna Framework",
+	"main": "lib/main.js",
+	"types": "lib/main.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"prepare": "npm run build",
+		"npm-install": "npm install"
+	},
+	"author": "Tim Rücker",
+	"dependencies": {
+		"@types/es6-promise": "^3.3.0",
+		"iizuna": "^3.4.0"
+	},
+	"devDependencies": {
+		"typescript": "^3.4.5"
+	}
+}
