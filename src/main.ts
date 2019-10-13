@@ -1,8 +1,2 @@
-import {ComponentFactory} from "iizuna";
-import {PageTransitionComponent} from "./page-transition.component";
-
-export {PageTransitionComponent} from "./page-transition.component";
-
-ComponentFactory.registerComponents([
-	PageTransitionComponent
-]);
+export {LoadPriorityComponent} from "./components/load-priority.component";
+export {PageTransitionComponent} from "./components/page-transition.component";
