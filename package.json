@@ -1,6 +1,6 @@
 {
 	"name": "iizuna-page-transition",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Page transition component for the iizuna Framework",
 	"main": "lib/main.js",
 	"types": "lib/main.d.ts",
