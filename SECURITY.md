@@ -1,0 +1,11 @@
+# Security Policy
+
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 0.0.x   | :white_check_mark: |
+
+## Reporting a Vulnerability
+
+Report vulnerabilities as a new Issue in this Repository
