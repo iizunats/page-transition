@@ -6,7 +6,6 @@ import {Facade} from "iizuna";
 import {CachingFacadeInterface} from "iizuna/lib/facades/caching/caching-facade.interface";
 
 export abstract class PageCacheUtility {
-	private static data: { [key: string]: PageCourierData } = {};
 	private static currentlyLoading = false;
 	private static queue: AnchorOptionsInterface[] = [];
 
