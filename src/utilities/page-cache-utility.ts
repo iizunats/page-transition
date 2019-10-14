@@ -2,11 +2,17 @@ import {AnchorOptionsInterface} from "./anchor-options.interface";
 import {PageCourier} from "../page-courier/page-courier";
 import {Promise as p} from "es6-promise";
 import {PageCourierData} from "../page-courier/page-courier-data";
+import {Facade} from "iizuna";
+import {CachingFacadeInterface} from "iizuna/lib/facades/caching/caching-facade.interface";
 
 export abstract class PageCacheUtility {
 	private static data: { [key: string]: PageCourierData } = {};
 	private static currentlyLoading = false;
 	private static queue: AnchorOptionsInterface[] = [];
+
+	private static getCachingFacade(): CachingFacadeInterface<string, PageCourierData> {
+		return Facade.get('cache') as any as CachingFacadeInterface<string, PageCourierData>;
+	}
 
 	/**
 	 * @description
@@ -17,9 +23,9 @@ export abstract class PageCacheUtility {
 	 * @return {Promise<PageCourierData>}
 	 */
 	public static async getDataForUrl(url: string): p<PageCourierData | null> {
-		// @todo: load it directly from the local storage.
-		if ((url in this.data) && this.data[url].responseHeader.validForCache()) {
-			return this.data[url]
+		const data = await this.getCachingFacade().get(url);
+		if (typeof data !== 'undefined' && data.responseHeader.validForCache()) {
+			return data;
 		}
 		return null;
 	}
@@ -33,9 +39,8 @@ export abstract class PageCacheUtility {
 	 */
 	public static async setDataForUrl(url: string, targetContent: PageCourierData): p<void> {
 		if (targetContent.responseHeader.validForCache()) {
-			this.data[url] = targetContent;
+			return this.getCachingFacade().set(url, targetContent);
 		}
-		// @todo: add local storage save (keep in mind, that the typescript objects should be able to be restored)
 	}
 
 	/**
