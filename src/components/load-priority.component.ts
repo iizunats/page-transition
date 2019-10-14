@@ -2,7 +2,7 @@ import {AbstractComponent, Component, ElementAttribute, OnReady} from "iizuna";
 import {PageCacheUtility} from "../utilities/page-cache-utility";
 import {AnchorUtility} from "../utilities/anchor-utility";
 
-const PRIORITY_LOADING_OFFSET = 150;//in ms
+const PRIORITY_LOADING_OFFSET = 150;// in ms
 
 /**
  * @description

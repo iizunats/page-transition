@@ -9,6 +9,11 @@ export abstract class PageCacheUtility {
 	private static currentlyLoading = false;
 	private static queue: AnchorOptionsInterface[] = [];
 
+	/**
+	 * @description
+	 * Returns the caching facade with the currently highest priority
+	 * @return {CachingFacadeInterface<string, PageCourierData>}
+	 */
 	private static getCachingFacade(): CachingFacadeInterface<string, PageCourierData> {
 		return Facade.get('cache') as any as CachingFacadeInterface<string, PageCourierData>;
 	}

@@ -24,7 +24,7 @@ export class PageTransitionComponent extends AbstractComponent {
 		PageTransitionComponent.components = components.filter((item: any) => {
 			const _class = new item();
 			return _class.__options.selector !== 'page-transition';
-		});
+		}); // Remove the page-transition component from list (used to prevent complications)
 		return components
 	}
 
