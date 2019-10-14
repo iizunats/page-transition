@@ -1,6 +1,11 @@
 import {AbstractComponent, Component, EventHelper, EventListener} from "iizuna";
 import {AnchorUtility} from "../utilities/anchor-utility";
 
+/**
+ * @description
+ * This component is registered automatically by the page-transition component.
+ * Every Element with the href Attribute (normally just anchor elements) get a listener attached
+ */
 @Component({
 	selector: 'href'
 })
@@ -14,8 +19,8 @@ export class HrefComponent extends AbstractComponent {
 	 */
 	@EventListener()
 	click(element: HTMLAnchorElement, event: any) {
-		//start transition process only when the link opens in the same window
-		if (AnchorUtility.anchorOpensInSameWindow(element)) {
+		//start transition process only when the element is a anchor and the link opens in the same window
+		if (element.tagName.toLowerCase() === 'a' && AnchorUtility.anchorOpensInSameWindow(element)) {
 			event.preventDefault();
 			EventHelper.triggerCustomEvent('page-transition.go-to', AnchorUtility.reduceAnchorToOptions(element));
 		}

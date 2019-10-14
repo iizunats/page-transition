@@ -2,6 +2,7 @@ import {Promise as p} from "es6-promise";
 import {PageCacheUtility} from "../utilities/page-cache-utility";
 import {HtmlElementUtility} from "iizuna";
 import {PageCourierData} from "./page-courier-data";
+import {PageCourierHeaders} from "./page-courier-headers";
 
 export abstract class PageCourier {
 
@@ -30,13 +31,12 @@ export abstract class PageCourier {
 		const html = await target.text();
 		const doc = new DOMParser().parseFromString(html, "text/html");
 		const titleTag = doc.querySelector('head>title') as HTMLTitleElement;
-
 		const content = {
 			requestUrl: url,
 			responseDocument: doc,
 			relevantNode: HtmlElementUtility.querySelectByAttribute('page-transition', doc),
 			title: titleTag.text,
-			responseHeader: target.headers
+			responseHeader: new PageCourierHeaders(target.headers)
 		};
 
 		PageCacheUtility.setDataForUrl(url, content); // Store new data in cache
