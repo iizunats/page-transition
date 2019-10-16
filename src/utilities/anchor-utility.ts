@@ -4,6 +4,16 @@ export abstract class AnchorUtility {
 
 	/**
 	 * @description
+	 * Simply checks for the tag name of the element
+	 * @param {Element} element
+	 * @return {boolean}
+	 */
+	public static isAnchorElement(element: Element) {
+		return element.tagName.toLowerCase() === 'a';
+	}
+
+	/**
+	 * @description
 	 * Returns true if the target attribute of the passed element is either empty or TARGET_SELF.
 	 * @param {HTMLAnchorElement} element
 	 * @return {boolean}

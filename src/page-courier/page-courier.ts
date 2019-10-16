@@ -4,6 +4,11 @@ import {HtmlElementUtility} from "iizuna";
 import {PageCourierData} from "./page-courier-data";
 import {PageCourierHeaders} from "./page-courier-headers";
 
+/**
+ * @description
+ * This class handles page request and caching of those pages.
+ * It acts like a low level service worker for the page-transition component.
+ */
 export abstract class PageCourier {
 
 	/**

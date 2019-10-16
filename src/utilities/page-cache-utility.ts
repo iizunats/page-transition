@@ -5,8 +5,24 @@ import {PageCourierData} from "../page-courier/page-courier-data";
 import {Facade} from "iizuna";
 import {CachingFacadeInterface} from "iizuna/lib/facades/caching/caching-facade.interface";
 
+/**
+ * @description
+ * A Utility class that manages caching for us.
+ * It used the CachingFacadeInterface of iizuna.
+ */
 export abstract class PageCacheUtility {
+	/**
+	 * @description
+	 * This variable is used to check if a page load is currently in progress.
+	 * @type {boolean}
+	 */
 	private static currentlyLoading = false;
+	/**
+	 * @description
+	 * The queue contains all pages that should be loaded one by one.
+	 * The array is sorted by request ordering.
+	 * @type {Array}
+	 */
 	private static queue: AnchorOptionsInterface[] = [];
 
 	/**
@@ -69,7 +85,7 @@ export abstract class PageCacheUtility {
 		if (this.queue.length === 0) {
 			return;
 		}
-		const nextItem = this.queue.shift();
+		const nextItem = this.queue.shift(); // Get the first item from the queue
 		this.currentlyLoading = true;
 		await PageCourier.loadPageContentCached(nextItem.href);
 		this.currentlyLoading = false;

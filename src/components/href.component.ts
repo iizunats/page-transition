@@ -8,20 +8,21 @@ import {AnchorUtility} from "../utilities/anchor-utility";
  */
 @Component({
 	selector: 'href'
+	// We cant restrict this to anchor elements, because link elements are also allowed to have href attributes
 })
 export class HrefComponent extends AbstractComponent {
 
 	/**
 	 * @description
-	 * attaches a click listener to all anchor elements which triggers the navigation process
+	 * attaches a click listener which triggers the navigation process
+	 * when the elected element was a anchor and opens in the same window.
 	 * @param {HTMLAnchorElement} element
 	 * @param event
 	 */
 	@EventListener()
 	click(element: HTMLAnchorElement, event: any) {
-		//start transition process only when the element is a anchor and the link opens in the same window
-		if (element.tagName.toLowerCase() === 'a' && AnchorUtility.anchorOpensInSameWindow(element)) {
-			event.preventDefault();
+		if (AnchorUtility.isAnchorElement(element) && AnchorUtility.anchorOpensInSameWindow(element)) {
+			event.preventDefault(); // Prevent browser default, because we are managing the page load
 			EventHelper.triggerCustomEvent('page-transition.go-to', AnchorUtility.reduceAnchorToOptions(element));
 		}
 	}

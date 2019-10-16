@@ -1,5 +1,10 @@
 import {PageCourierHeader} from "./page-courier-header";
 
+/**
+ * @description
+ * A wrapper class for all headers returned by the server.
+ * It makes working with these header a little bit easier.
+ */
 export class PageCourierHeaders {
 	constructor(private headers: Headers, private epoch: Date = new Date()) {
 	}

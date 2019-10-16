@@ -3,11 +3,18 @@ import {PageCourier} from "../page-courier/page-courier";
 import {AnchorOptionsInterface} from "../utilities/anchor-options.interface";
 import {HrefComponent} from "./href.component";
 
+// @todo: implement singleton component which can only be created once per page.
+// @todo: if this element is found more than once per page an error is thrown and the second component gets not initialized.
 @Component({
 	selector: 'page-transition'
 })
 export class PageTransitionComponent extends AbstractComponent {
 
+	/**
+	 * @description
+	 * List of filtered components that are registered for every page load
+	 * @type {Array}
+	 */
 	private static components: any[] = [];
 
 	/**
@@ -22,9 +29,9 @@ export class PageTransitionComponent extends AbstractComponent {
 	public static config<T extends any[]>(components: T): T {
 		components.push(HrefComponent); // Add the HrefComponent to the list
 		PageTransitionComponent.components = components.filter((item: any) => {
-			const _class = new item();
-			return _class.__options.selector !== 'page-transition';
-		}); // Remove the page-transition component from list (used to prevent complications)
+			const _class = new item(); // Creating new component to receive the component options.
+			return _class.__options.selector !== 'page-transition'; // Remove the page-transition component from list (used to prevent complications)
+		});
 		return components
 	}
 
@@ -48,7 +55,9 @@ export class PageTransitionComponent extends AbstractComponent {
 		this.element.innerHTML = targetContent.relevantNode.innerHTML;
 		ComponentFactory.registerComponents(PageTransitionComponent.components, this.element);
 
-		window.history.pushState(null, '', event.value.href);
-		window.document.title = targetContent.title; // Changing the page title based by target
+		window.history.pushState(null, targetContent.title, event.value.href);
+
+		// Changing the page title based by target (because it is not working as expected by pushState)
+		window.document.title = targetContent.title;
 	}
 }

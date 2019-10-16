@@ -1,5 +1,10 @@
 import {PageCourierHeaders} from "./page-courier-headers";
 
+/**
+ * @description
+ * A Wrapper class for header information.
+ * It makes working with header data a little bit easier.
+ */
 export class PageCourierHeader {
 	/**
 	 * @description

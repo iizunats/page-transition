@@ -2,6 +2,13 @@ import {AbstractComponent, Component, ElementAttribute, OnReady} from "iizuna";
 import {PageCacheUtility} from "../utilities/page-cache-utility";
 import {AnchorUtility} from "../utilities/anchor-utility";
 
+/**
+ * @description
+ * This offset is used to delay the page load of low priority anchors.
+ * This value is multiplied by the priority to determine the offset.
+ * e.g. PRIORITY_LOADING_OFFSET(150) * 5 = 750ms delay before target is getting queued
+ * @type {number}
+ */
 const PRIORITY_LOADING_OFFSET = 150;// in ms
 
 /**
@@ -16,6 +23,10 @@ const PRIORITY_LOADING_OFFSET = 150;// in ms
 	restrict: 'a'
 })
 export class LoadPriorityComponent extends AbstractComponent implements OnReady {
+	/**
+	 * @description
+	 * We know that this element can only be a AnchorElement because of the component restriction.
+	 */
 	element: HTMLAnchorElement;
 
 	/**
