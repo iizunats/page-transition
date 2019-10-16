@@ -19,7 +19,7 @@ export abstract class AnchorUtility {
 	 * @return {boolean}
 	 */
 	public static isInternalLink(element: HTMLAnchorElement) {
-		const checkDomain = url => {
+		const checkDomain = (url: string) => {
 			if (url.indexOf('//') === 0) { // Add protocol if missing
 				url = location.protocol + url;
 			}
