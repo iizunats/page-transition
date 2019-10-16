@@ -21,7 +21,11 @@ export class HrefComponent extends AbstractComponent {
 	 */
 	@EventListener()
 	click(element: HTMLAnchorElement, event: any) {
-		if (AnchorUtility.isAnchorElement(element) && AnchorUtility.anchorOpensInSameWindow(element)) {
+		if (
+			AnchorUtility.isAnchorElement(element) && // Anchor is even an anchor
+			AnchorUtility.isInternalLink(element) && // Anchor is internal
+			AnchorUtility.anchorOpensInSameWindow(element) // Anchor opens not in new tab or window (or even frame)
+		) {
 			event.preventDefault(); // Prevent browser default, because we are managing the page load
 			EventHelper.triggerCustomEvent('page-transition.go-to', AnchorUtility.reduceAnchorToOptions(element));
 		}
