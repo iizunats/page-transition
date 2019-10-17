@@ -7,7 +7,8 @@
 	"scripts": {
 		"build": "tsc",
 		"prepare": "npm run build",
-		"npm-install": "npm install"
+		"npm-install": "npm install",
+		"test": "nyc mocha -r ts-node/register -r jsdom-global/register tests/unit/**/*.spec.ts"
 	},
 	"author": "Tim Rücker",
 	"dependencies": {
@@ -15,6 +16,14 @@
 		"iizuna": "^3.5.0"
 	},
 	"devDependencies": {
+		"@types/chai": "^4.2.3",
+		"@types/mocha": "^5.2.6",
+		"chai": "^4.2.0",
+		"jsdom": "^13.2.0",
+		"jsdom-global": "^3.0.2",
+		"mocha": "^5.2.0",
+		"nyc": "^14.1.1",
+		"ts-node": "^7.0.1",
 		"typescript": "^3.4.5"
 	}
 }
