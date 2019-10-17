@@ -39,7 +39,7 @@ export class LoadPriorityComponent extends AbstractComponent implements OnReady 
 
 	/**
 	 * @description
-	 * Pre-loads the target page and writes it into the cache for faster page loadings
+	 * Pre-loads the target page and writes it into the cache for faster page loadings.
 	 */
 	public onReady() {
 		const loadDelay = +this.loadPriority * PRIORITY_LOADING_OFFSET;

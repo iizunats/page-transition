@@ -11,7 +11,7 @@ export abstract class AnchorUtility {
 
 	/**
 	 * @description
-	 * Simply checks for the tag name of the element
+	 * Simply checks for the tag name of the element.
 	 * @param {Element} element
 	 * @return {boolean}
 	 */
@@ -21,7 +21,7 @@ export abstract class AnchorUtility {
 
 	/**
 	 * @description
-	 * Checks whether a anchor is linking to an internal page or not
+	 * Checks whether a anchor is linking to an internal page or not.
 	 * @param {HTMLAnchorElement} element
 	 * @return {boolean}
 	 */

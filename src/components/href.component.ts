@@ -4,11 +4,11 @@ import {AnchorUtility} from "../utilities/anchor-utility";
 /**
  * @description
  * This component is registered automatically by the page-transition component.
- * Every Element with the href Attribute (normally just anchor elements) get a listener attached
+ * Every Element with the href Attribute (normally just anchor elements) get a listener attached.
  */
 @Component({
 	selector: 'href'
-	// We cant restrict this to anchor elements, because link elements are also allowed to have href attributes
+	// We cant restrict this to anchor elements, because link elements are also allowed to have href attributes.
 })
 export class HrefComponent extends AbstractComponent {
 

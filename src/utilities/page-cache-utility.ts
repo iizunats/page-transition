@@ -27,7 +27,7 @@ export abstract class PageCacheUtility {
 
 	/**
 	 * @description
-	 * Returns the caching facade with the currently highest priority
+	 * Returns the caching facade with the currently highest priority.
 	 * @return {CachingFacadeInterface<string, PageCourierData>}
 	 */
 	private static getCachingFacade(): CachingFacadeInterface<string, PageCourierData> {
@@ -52,7 +52,7 @@ export abstract class PageCacheUtility {
 
 	/**
 	 * @description
-	 * Stores the passed target into the cache if the document is valid for caching
+	 * Stores the passed target into the cache if the document is valid for caching.
 	 * @param {string} url
 	 * @param {PageCourierData} targetContent
 	 * @return {Promise<void>}
@@ -65,7 +65,7 @@ export abstract class PageCacheUtility {
 
 	/**
 	 * @description
-	 * Adds a AnchorOptionsInterface into the queue and then pulls the item if no queue-request is already in progress
+	 * Adds a AnchorOptionsInterface into the queue and then pulls the item if no queue-request is already in progress.
 	 * @param {AnchorOptionsInterface} options
 	 * @return {Promise<void>}
 	 */
@@ -78,7 +78,7 @@ export abstract class PageCacheUtility {
 
 	/**
 	 * @description
-	 * Loads the next item of the queue (if not empty) and then calls itself
+	 * Loads the next item of the queue (if not empty) and then calls itself.
 	 * @return {Promise<void>}
 	 */
 	private static async loadNextQueueItem(): p<void> {

@@ -8,13 +8,13 @@ import {PageCourierHeaders} from "./page-courier-headers";
 export class PageCourierHeader {
 	/**
 	 * @description
-	 * A unified value of the header
+	 * A unified value of the header.
 	 * @type {string}
 	 */
 	private value: string = this.get().toLowerCase();
 	/**
 	 * @description
-	 * If the header value is a list of key value pairs its parsed into this list
+	 * If the header value is a list of key value pairs its parsed into this list.
 	 * @type {string[]}
 	 */
 	private valueList: string[] = this.value
@@ -26,7 +26,7 @@ export class PageCourierHeader {
 
 	/**
 	 * @description
-	 * Returns the value of this header
+	 * Returns the value of this header.
 	 * @return {string}
 	 */
 	public get() {
@@ -37,7 +37,7 @@ export class PageCourierHeader {
 	 * @description
 	 * either returns the value of the header itself (if no key was passed)
 	 * or returns the value of a ke value pair of values.
-	 * An Empty string will be returned if the key was not found in this list
+	 * An Empty string will be returned if the key was not found in this list.
 	 * @param {string} key
 	 * @return {string}
 	 */
@@ -56,7 +56,7 @@ export class PageCourierHeader {
 
 	/**
 	 * @description
-	 * Check whether a header contains a specific value inside the value list
+	 * Check whether a header contains a specific value inside the value list.
 	 * @param {string} value
 	 * @return {boolean}
 	 */

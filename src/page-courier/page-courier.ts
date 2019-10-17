@@ -13,7 +13,7 @@ export abstract class PageCourier {
 
 	/**
 	 * @description
-	 * First searches for the target url in the cache and then polls it if the cache was empty
+	 * First searches for the target url in the cache and then polls it if the cache was empty.
 	 * @param {string} url
 	 * @return {Promise<PageCourierData>}
 	 */

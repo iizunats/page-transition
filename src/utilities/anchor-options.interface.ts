@@ -17,12 +17,12 @@ export type TARGET = TARGET_BLANK | TARGET_NONE | TARGET_SELF | TARGET_PARENT | 
 export interface AnchorOptionsInterface {
 	/**
 	 * @description
-	 * The targets page href
+	 * The targets page href.
 	 */
 	href: string;
 	/**
 	 * @description
-	 * The target type (like _blank oder _self)
+	 * The target type (like _blank oder _self).
 	 */
 	target: TARGET;
 }

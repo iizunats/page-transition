@@ -12,7 +12,7 @@ export class PageTransitionComponent extends AbstractComponent {
 
 	/**
 	 * @description
-	 * List of filtered components that are registered for every page load
+	 * List of filtered components that are registered for every page load.
 	 * @type {Array}
 	 */
 	private static components: any[] = [];
@@ -37,7 +37,7 @@ export class PageTransitionComponent extends AbstractComponent {
 
 	/**
 	 * @description
-	 * This listener starts the complete transition process based by the passed AnchorOptionsInterface as event value
+	 * This listener starts the complete transition process based by the passed AnchorOptionsInterface as event value.
 	 * @param element
 	 * @param {{value: AnchorOptionsInterface}} event
 	 * @return {Promise<void>}

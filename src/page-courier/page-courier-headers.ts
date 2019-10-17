@@ -12,7 +12,7 @@ export class PageCourierHeaders {
 	/**
 	 * @description
 	 * Creates a new PageCourierHeader object based by the header key.
-	 * This method replaces the "get" method when advanced functionality is needed
+	 * This method replaces the "get" method when advanced functionality is needed.
 	 * @param {string} key
 	 * @return {PageCourierHeader}
 	 */
@@ -22,7 +22,7 @@ export class PageCourierHeaders {
 
 	/**
 	 * @description
-	 * Simply calls the get method of the headers
+	 * Simply calls the get method of the headers.
 	 * @param {string} key
 	 * @return {string}
 	 */
@@ -32,7 +32,7 @@ export class PageCourierHeaders {
 
 	/**
 	 * @description
-	 * Returns true if the caching time is still valid
+	 * Returns true if the caching time is still valid.
 	 * @return {boolean}
 	 */
 	public validForCache(): boolean {
@@ -42,7 +42,7 @@ export class PageCourierHeaders {
 	}
 
 	/**
-	 * maxAge contains the maximum amount of seconds this resource is considered "fresh"
+	 * maxAge contains the maximum amount of seconds this resource is considered "fresh".
 	 * @type {number}
 	 */
 	public getMaxAge(): number {
