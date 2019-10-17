@@ -1,4 +1,4 @@
-import {AbstractComponent, Component, ComponentFactory, GlobalEventListener} from "iizuna";
+import {AbstractComponent, Component, ComponentFactory, EventHelper, GlobalEventListener} from "iizuna";
 import {PageCourier} from "../page-courier/page-courier";
 import {AnchorOptionsInterface} from "../utilities/anchor-options.interface";
 import {HrefComponent} from "./href.component";
@@ -44,6 +44,7 @@ export class PageTransitionComponent extends AbstractComponent {
 	 */
 	@GlobalEventListener('page-transition.go-to')
 	async loadPage(element: any, event: { value: AnchorOptionsInterface }) {
+		EventHelper.triggerCustomEvent('page-transition.start');
 		const targetContent = await PageCourier.loadPageContentCached(event.value.href);
 
 		// either the ajax call was unsuccessful or the relevantNode was not found on the target page.
@@ -59,5 +60,6 @@ export class PageTransitionComponent extends AbstractComponent {
 
 		// Changing the page title based by target (because it is not working as expected by pushState)
 		window.document.title = targetContent.title;
+		EventHelper.triggerCustomEvent('page-transition.end');
 	}
 }
