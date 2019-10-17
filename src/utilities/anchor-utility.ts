@@ -1,4 +1,11 @@
-import {AnchorOptionsInterface, TARGET, TARGET_BLANK, TARGET_SELF} from "./anchor-options.interface";
+import {
+	AnchorOptionsInterface,
+	TARGET,
+	TARGET_BLANK,
+	TARGET_PARENT,
+	TARGET_SELF,
+	TARGET_TOP
+} from "./anchor-options.interface";
 
 export abstract class AnchorUtility {
 
@@ -29,7 +36,7 @@ export abstract class AnchorUtility {
 		const relativeLink = element.href.indexOf(':') <= -1 && element.href.indexOf('//') <= -1;  // If the url does not contain a colon or double slash
 		const sameDomain = checkDomain(location.href) === checkDomain(element.href); // If the target is the same domain
 
-		return relativeLink || sameDomain;
+		return this.anchorOpensInSameWindow(element) && (relativeLink || sameDomain);
 	}
 
 	/**
@@ -45,7 +52,7 @@ export abstract class AnchorUtility {
 
 	/**
 	 * @description
-	 * returns just the properties needed for the event
+	 * returns just the properties needed for the event.
 	 * @param {HTMLAnchorElement} element
 	 * @return {AnchorOptionsInterface}
 	 */
@@ -58,7 +65,8 @@ export abstract class AnchorUtility {
 
 	/**
 	 * @description
-	 * Just returns allowed targets. returns a empty string if none is matching.
+	 * Just returns allowed targets.
+	 * Returns a empty string if none is matching.
 	 * @param {string} target
 	 * @return {TARGET}
 	 */
@@ -66,10 +74,12 @@ export abstract class AnchorUtility {
 		switch (target) {
 			case TARGET_BLANK:
 				return TARGET_BLANK;
+			case TARGET_TOP:
+				return TARGET_TOP;
+			case '':
 			case TARGET_SELF:
 				return TARGET_SELF;
-			default:
-				return '';
 		}
+		return TARGET_PARENT;
 	}
 }
