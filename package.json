@@ -1,5 +1,5 @@
 {
-	"name": "iizuna-page-transition",
+	"name": "@iizuna/page-transition",
 	"version": "1.0.0",
 	"description": "Page transition component for the iizuna Framework",
 	"main": "lib/main.js",
