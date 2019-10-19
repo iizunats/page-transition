@@ -8,7 +8,7 @@
 		"build": "tsc",
 		"prepare": "npm run build",
 		"npm-install": "npm install",
-		"test": "nyc mocha -r ts-node/register -r jsdom-global/register tests/unit/**/*.spec.ts"
+		"test": "nyc mocha -r ts-node/register -r jsdom-global/register tests/unit/**/*.spec.ts tests/unit/*.spec.ts"
 	},
 	"author": "Tim Rücker",
 	"dependencies": {
