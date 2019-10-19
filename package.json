@@ -4,6 +4,7 @@
 	"description": "Page transition component for the iizuna Framework",
 	"main": "lib/main.js",
 	"types": "lib/main.d.ts",
+	"license": "ISC",
 	"scripts": {
 		"build": "tsc",
 		"prepare": "npm run build",
