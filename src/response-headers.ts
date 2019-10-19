@@ -1,23 +1,23 @@
-import {PageCourierHeader} from "./page-courier-header";
+import {ResponseHeader} from './response-header';
 
 /**
  * @description
  * A wrapper class for all headers returned by the server.
  * It makes working with these header a little bit easier.
  */
-export class PageCourierHeaders {
+export class ResponseHeaders {
 	constructor(private headers: Headers, private epoch: Date = new Date()) {
 	}
 
 	/**
 	 * @description
-	 * Creates a new PageCourierHeader object based by the header key.
+	 * Creates a new ResponseHeader object based by the header key.
 	 * This method replaces the "get" method when advanced functionality is needed.
 	 * @param {string} key
-	 * @return {PageCourierHeader}
+	 * @return {ResponseHeader}
 	 */
-	public getHeader(key: string): PageCourierHeader {
-		return new PageCourierHeader(this, key);
+	public getHeader(key: string): ResponseHeader {
+		return new ResponseHeader(this, key);
 	}
 
 	/**
@@ -50,7 +50,7 @@ export class PageCourierHeaders {
 
 		// If caching is disabled for this file
 		if (cacheControlHeader.contains('no-cache') || cacheControlHeader.contains('no-store')) {
-			return 0; // Return 0 directly
+			return 0;
 		}
 
 		const maxAge = cacheControlHeader.getValue('max-age');

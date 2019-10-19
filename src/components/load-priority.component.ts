@@ -1,15 +1,5 @@
-import {AbstractComponent, Component, ElementAttribute, OnReady} from "iizuna";
-import {PageCacheUtility} from "../utilities/page-cache-utility";
-import {AnchorUtility} from "../utilities/anchor-utility";
-
-/**
- * @description
- * This offset is used to delay the page load of low priority anchors.
- * This value is multiplied by the priority to determine the offset.
- * e.g. PRIORITY_LOADING_OFFSET(150) * 5 = 750ms delay before target is getting queued
- * @type {number}
- */
-const PRIORITY_LOADING_OFFSET = 150;// in ms
+import {AbstractComponent, Component, ElementAttribute, OnReady} from 'iizuna';
+import {PageCacheUtility} from '../utilities/page-cache-utility';
 
 /**
  * @description
@@ -17,6 +7,8 @@ const PRIORITY_LOADING_OFFSET = 150;// in ms
  * The request to the page is being pushed in a request queue based by the loading priority.
  *
  * If two elements have the same priority, the first element in the DOM will be loaded first.
+ *
+ * This component does not include untested behaviour.
  */
 @Component({
 	selector: 'load-priority',
@@ -42,9 +34,6 @@ export class LoadPriorityComponent extends AbstractComponent implements OnReady 
 	 * Pre-loads the target page and writes it into the cache for faster page loadings.
 	 */
 	public onReady() {
-		const loadDelay = +this.loadPriority * PRIORITY_LOADING_OFFSET;
-		setTimeout(() => {
-			PageCacheUtility.queueAutomaticPageLoad(AnchorUtility.reduceAnchorToOptions(this.element));
-		}, loadDelay);
+		PageCacheUtility.queueAutomaticPageLoad(this.element, this.loadPriority);
 	}
 }

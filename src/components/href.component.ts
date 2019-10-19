@@ -1,14 +1,17 @@
-import {AbstractComponent, Component, EventHelper, EventListener} from "iizuna";
-import {AnchorUtility} from "../utilities/anchor-utility";
+import {AbstractComponent, Component, EventHelper, EventListener} from 'iizuna';
+import {AnchorOptions} from '../anchor-options';
+import {GoToEvent} from "../events/go-to.event";
 
 /**
  * @description
  * This component is registered automatically by the page-transition component.
  * Every Element with the href Attribute (normally just anchor elements) get a listener attached.
+ *
+ * This component does not include untested behaviour.
  */
 @Component({
 	selector: 'href'
-	// We cant restrict this to anchor elements, because link elements are also allowed to have href attributes.
+	// We can't restrict this to anchor elements, because link elements are also allowed to have href attributes.
 })
 export class HrefComponent extends AbstractComponent {
 
@@ -21,12 +24,10 @@ export class HrefComponent extends AbstractComponent {
 	 */
 	@EventListener()
 	click(element: HTMLAnchorElement, event: any) {
-		if (
-			AnchorUtility.isAnchorElement(element) && // Anchor is even an anchor
-			AnchorUtility.isInternalLink(element)  // Anchor is internal and opens not in new tab or window (or even frame)
-		) {
+		const options = new AnchorOptions(element);
+		if (options.isAnchorElement && options.isInternalLink()) {
 			event.preventDefault(); // Prevent browser default, because we are managing the page load
-			EventHelper.triggerCustomEvent('page-transition.go-to', AnchorUtility.reduceAnchorToOptions(element));
+			EventHelper.triggerCustomEvent(GoToEvent.eventName, options);
 		}
 	}
 }

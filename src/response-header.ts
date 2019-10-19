@@ -1,17 +1,24 @@
-import {PageCourierHeaders} from "./page-courier-headers";
+import {ResponseHeaders} from './response-headers';
 
 /**
  * @description
  * A Wrapper class for header information.
  * It makes working with header data a little bit easier.
  */
-export class PageCourierHeader {
+export class ResponseHeader {
+	/**
+	 * @param {ResponseHeaders} headers
+	 * @param {string} name
+	 */
+	constructor(private headers: ResponseHeaders, private name: string) {
+	}
+
 	/**
 	 * @description
 	 * A unified value of the header.
 	 * @type {string}
 	 */
-	private value: string = this.get().toLowerCase();
+	private value: string = this.headers.get(this.name).toLowerCase();
 	/**
 	 * @description
 	 * If the header value is a list of key value pairs its parsed into this list.
@@ -21,17 +28,6 @@ export class PageCourierHeader {
 		.split(',') // Get The separate information
 		.map(keyValuePair => keyValuePair.trim());// remove the possible trailing spaces
 
-	constructor(private headers: PageCourierHeaders, private name: string) {
-	}
-
-	/**
-	 * @description
-	 * Returns the value of this header.
-	 * @return {string}
-	 */
-	public get() {
-		return this.headers.get(this.name);
-	}
 
 	/**
 	 * @description
